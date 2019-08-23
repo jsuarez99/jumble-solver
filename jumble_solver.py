@@ -15,11 +15,6 @@ freq_dict_df = sc.textFile('freq_dict.json', minPartitions=100) \
 	.toDF() \
 	.rdd
 	
-#Helper function to get all words of length n (wordLength) from the dictionary 
-#Runs fast enough with this data set, in production this would work better as a spark dataframe
-def getWordsFromDictionary(wordLength):
-	return set([word for word in freq_dict.keys() if len(word) == wordLength])
-	
 #Function that returns true if all characters in needle are in the variable haystack.
 #For each loop through needle's characters, a character from haystack is removed.
 def checkIfWordInAnsStr(needle, haystack):
